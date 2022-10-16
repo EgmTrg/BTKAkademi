@@ -2,14 +2,16 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class MenuManager : MonoBehaviour
 {
     [SerializeField]
     private Button start_button, quit_button;
+    [SerializeField]
+    private GameObject alpha_Panel;
 
-    void Start()
-    {
+    void Start() {
         FadeOut();
     }
 
@@ -20,6 +22,8 @@ public class MenuManager : MonoBehaviour
 
     #region ButtonEvents
     public void StartButton() {
+        /*alpha_Panel.SetActive(true);
+        alpha_Panel.GetComponent<CanvasGroup>().DOFade(1, 2f);*/
         SceneManager.LoadScene("GameScene");
     }
 
