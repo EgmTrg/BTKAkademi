@@ -1,6 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class MenuManager : MonoBehaviour
 
     #region ButtonEvents
     public void StartButton() {
-
+        SceneManager.LoadScene("GameScene");
     }
 
     public void QuitButton() {
