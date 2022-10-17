@@ -578,6 +578,7 @@ MonoBehaviour:
   kare_Prefab: {fileID: 1152596630667489103, guid: 538b652f10503f94dac8b402e6229b1e, type: 3}
   kareler_Panel: {fileID: 1271759743}
   soru_Panel: {fileID: 2107481580}
+  soru_Text: {fileID: 1778027471}
 --- !u!4 &1846104043
 Transform:
   m_ObjectHideFlags: 0
@@ -811,8 +812,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 16.99998, y: -40}
-  m_SizeDelta: {x: 395.4865, y: 96}
+  m_AnchoredPosition: {x: 16.120708, y: -40}
+  m_SizeDelta: {x: 340.973, y: 85.449}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2107481581
 MonoBehaviour:
