@@ -25,5 +25,6 @@ public class PuanManager : MonoBehaviour
         }
 
         toplamPuan += puanArtisi;
+        puanText.text = toplamPuan.ToString();
     }
 }
