@@ -13,14 +13,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform soru_Panel;
     [SerializeField] private GameObject hakPanel;
     [SerializeField] private Text soru_Text;
+    [SerializeField] private Sprite[] kareSprites;
 
     private GameObject[] kareler = new GameObject[25];
+    private GameObject seciliKare;
     private List<int> degerler = new List<int>();
     private int bolenSayi, bolunenSayi, kacinciSoru = 0, dogruSonuc;
     private int butonDegeri;
     private bool karelereBasilsinmi = false;
     private int kalanHak = 3;
-    
+
     private PuanManager puanManager;
     private string soruZorlukDerecesi;
 
@@ -34,6 +36,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < 25; i++) {
             GameObject kare = Instantiate(kare_Prefab, kareler_Panel);
             kare.GetComponent<Button>().onClick.AddListener(() => ClickEvent());
+            kare.transform.GetChild(1).GetComponent<Image>().sprite = kareSprites[Random.Range(0, kareSprites.Length)];
             kareler[i] = kare;
         }
         DegerleriKarelereYaz();
@@ -43,17 +46,22 @@ public class GameManager : MonoBehaviour
 
     private void ClickEvent() {
         if (karelereBasilsinmi) {
-            butonDegeri = int.Parse(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.transform.GetChild(0).GetComponent<Text>().text);
+            seciliKare = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
+            butonDegeri = int.Parse(seciliKare.transform.GetChild(0).GetComponent<Text>().text);
             SonucuKontrolEt();
         }
     }
 
     private void SonucuKontrolEt() {
         if (butonDegeri == dogruSonuc) {
+            seciliKare.transform.GetChild(0).GetComponent<Text>().text = "";
+            seciliKare.transform.GetChild(1).GetComponent<Image>().enabled = true;
+            seciliKare.GetComponent<Button>().interactable = false;
             puanManager.PuanArttir(soruZorlukDerecesi);
+            degerler.RemoveAt(kacinciSoru);
+            SoruPaneliniAc();
         }
         else {
-            Debug.Log("Yanlis Sonuc!");
             kalanHak--;
             hakPanel.GetComponent<KalpManager>().HakSorgula(kalanHak);
         }
@@ -88,13 +96,13 @@ public class GameManager : MonoBehaviour
         soru_Text.text = bolunenSayi.ToString() + " : " + bolenSayi.ToString();
 
         if (bolunenSayi >= 40) {
-            soruZorlukDerecesi = "Kolay";
+            soruZorlukDerecesi = "Zor";
         }
-        else if (bolunenSayi >=80) {
+        else if (bolunenSayi >= 80) {
             soruZorlukDerecesi = "Orta";
         }
         else {
-            soruZorlukDerecesi = "Zor";
+            soruZorlukDerecesi = "Kolay";
         }
     }
 }

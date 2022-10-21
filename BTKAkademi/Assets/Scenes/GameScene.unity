@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5765a97350a6cd44f93b10c7befc81d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puanText: {fileID: 0}
+  puanText: {fileID: 1276234802}
 --- !u!114 &256768415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,7 +626,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000022888, y: -0.000026703}
+  m_AnchoredPosition: {x: 0.000022888184, y: -0.00002670288}
   m_SizeDelta: {x: 90.4218, y: 59.6352}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1276234802
@@ -1039,6 +1039,12 @@ MonoBehaviour:
   soru_Panel: {fileID: 2107481580}
   hakPanel: {fileID: 973684509}
   soru_Text: {fileID: 1778027471}
+  kareSprites:
+  - {fileID: 21300000, guid: 8e36144a78d721a4bb9200899aed63cc, type: 3}
+  - {fileID: 21300000, guid: 009d1613b2a49ba4fbdea5d89d468a18, type: 3}
+  - {fileID: 21300000, guid: 17078aafb946cf145b62b5c530c9871c, type: 3}
+  - {fileID: 21300000, guid: 3b42034d221be414995afdfb914b9494, type: 3}
+  - {fileID: 21300000, guid: 005dcd919ec355f41a5c50172b212793, type: 3}
 --- !u!4 &1846104043
 Transform:
   m_ObjectHideFlags: 0
