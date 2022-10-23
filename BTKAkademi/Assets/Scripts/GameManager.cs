@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject hakPanel;
     [SerializeField] private Text soru_Text;
     [SerializeField] private Sprite[] kareSprites;
+    [SerializeField] private GameObject sonuc_Panel;
 
     private GameObject[] kareler = new GameObject[25];
     private GameObject seciliKare;
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     private void Start() {
         puanManager = GameObject.FindObjectOfType<PuanManager>();
+        sonuc_Panel.GetComponent<RectTransform>().localScale = Vector3.zero;
         soru_Panel.GetComponent<RectTransform>().localScale = Vector3.zero;
         KareleriOlustur();
     }
@@ -92,7 +94,10 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Question Field
-    private void OyunBitti() => Debug.Log("Oyun Bitti");
+    private void OyunBitti() {
+        sonuc_Panel.GetComponent<RectTransform>().DOScale(1, 0.3f).SetEase(Ease.OutBack);
+        Debug.Log("Oyun bitti.");
+    }
 
     private void SoruPaneliniAc() {
         SoruSor();
