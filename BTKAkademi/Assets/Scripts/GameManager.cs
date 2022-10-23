@@ -1,10 +1,8 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
-//using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
@@ -52,6 +50,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #region Animation
+    private IEnumerator DoFadeRoutine() {
+        foreach (var kare in kareler) {
+            kare.GetComponent<CanvasGroup>().DOFade(1, 0.2f);
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
+    #endregion
+
+    #region SquareMathField
+    private void DegerleriKarelereYaz() {
+        foreach (var kare in kareler) {
+            var deger = Random.Range(1, 12);
+            degerler.Add(deger);
+            kare.transform.GetChild(0).GetComponent<Text>().text = deger.ToString();
+        }
+    }
+
     private void SonucuKontrolEt() {
         if (butonDegeri == dogruSonuc) {
             seciliKare.transform.GetChild(0).GetComponent<Text>().text = "";
@@ -73,23 +89,10 @@ public class GameManager : MonoBehaviour
             OyunBitti();
         }
     }
+    #endregion
 
+    #region Question Field
     private void OyunBitti() => Debug.Log("Oyun Bitti");
-
-    private IEnumerator DoFadeRoutine() {
-        foreach (var kare in kareler) {
-            kare.GetComponent<CanvasGroup>().DOFade(1, 0.2f);
-            yield return new WaitForSeconds(0.05f);
-        }
-    }
-
-    private void DegerleriKarelereYaz() {
-        foreach (var kare in kareler) {
-            var deger = Random.Range(1, 12);
-            degerler.Add(deger);
-            kare.transform.GetChild(0).GetComponent<Text>().text = deger.ToString();
-        }
-    }
 
     private void SoruPaneliniAc() {
         SoruSor();
@@ -114,4 +117,5 @@ public class GameManager : MonoBehaviour
             soruZorlukDerecesi = "Kolay";
         }
     }
+    #endregion
 }
