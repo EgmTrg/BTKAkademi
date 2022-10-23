@@ -59,13 +59,22 @@ public class GameManager : MonoBehaviour
             seciliKare.GetComponent<Button>().interactable = false;
             puanManager.PuanArttir(soruZorlukDerecesi);
             degerler.RemoveAt(kacinciSoru);
-            SoruPaneliniAc();
+            if (degerler.Count < 0)
+                SoruPaneliniAc();
+            else
+                OyunBitti();
         }
         else {
             kalanHak--;
             hakPanel.GetComponent<KalpManager>().HakSorgula(kalanHak);
         }
+
+        if (kalanHak <= 0) {
+            OyunBitti();
+        }
     }
+
+    private void OyunBitti() => Debug.Log("Oyun Bitti");
 
     private IEnumerator DoFadeRoutine() {
         foreach (var kare in kareler) {
