@@ -17,15 +17,22 @@ public class GameManager : MonoBehaviour
     private GameObject[] kareler = new GameObject[25];
     private GameObject seciliKare;
     private List<int> degerler = new List<int>();
+    private AudioSource audioSource;
     private int bolenSayi, bolunenSayi, kacinciSoru = 0, dogruSonuc;
     private int butonDegeri;
     private bool karelereBasilsinmi = false;
-    private int kalanHak = 3;
+    private int kalanHak;
+    public AudioClip buton_sesi;
 
     private PuanManager puanManager;
     private string soruZorlukDerecesi;
 
+    private void Awake() {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void Start() {
+        kalanHak = 3;
         puanManager = GameObject.FindObjectOfType<PuanManager>();
         sonuc_Panel.GetComponent<RectTransform>().localScale = Vector3.zero;
         soru_Panel.GetComponent<RectTransform>().localScale = Vector3.zero;
@@ -46,6 +53,7 @@ public class GameManager : MonoBehaviour
 
     private void ClickEvent() {
         if (karelereBasilsinmi) {
+            audioSource.PlayOneShot(buton_sesi);
             seciliKare = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
             butonDegeri = int.Parse(seciliKare.transform.GetChild(0).GetComponent<Text>().text);
             SonucuKontrolEt();
@@ -77,7 +85,7 @@ public class GameManager : MonoBehaviour
             seciliKare.GetComponent<Button>().interactable = false;
             puanManager.PuanArttir(soruZorlukDerecesi);
             degerler.RemoveAt(kacinciSoru);
-            if (degerler.Count < 0)
+            if (degerler.Count > 0)
                 SoruPaneliniAc();
             else
                 OyunBitti();
