@@ -11,6 +11,7 @@ public class GeriSayimManager : MonoBehaviour
 
     [SerializeField] private GameManager gameManager;
 
+
     private void Awake() {
         gameManager = GameObject.FindObjectOfType<GameManager>();
     }
@@ -41,6 +42,7 @@ public class GeriSayimManager : MonoBehaviour
         geriSayim_Object.GetComponent<RectTransform>().DOScale(0, 0.2f).SetEase(Ease.InBack);
         yield return new WaitForSeconds(0.3f);
         StopAllCoroutines();
-        //Debug.Log("Oyun basladi!");
+
+        gameManager.OyunaBasla();
     }
 }
