@@ -16,10 +16,6 @@ public class GeriSayimManager : MonoBehaviour
         gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
-    private void Start() {
-        StartCoroutine(GeriSayRoutine());
-    }
-
     IEnumerator GeriSayRoutine() {
         geriSayim_Text.text = "3";
         yield return new WaitForSeconds(0.5f);
