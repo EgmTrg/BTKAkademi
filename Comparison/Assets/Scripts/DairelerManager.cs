@@ -9,7 +9,7 @@ public class DairelerManager : MonoBehaviour
         DairelerScaleKapat();
     }
 
-    private void DairelerScaleKapat() {
+    public void DairelerScaleKapat() {
         foreach (GameObject daire in daireler) {
             daire.GetComponent<RectTransform>().localScale = Vector3.zero;
         }

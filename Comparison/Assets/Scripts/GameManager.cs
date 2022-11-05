@@ -12,13 +12,14 @@ public class GameManager : MonoBehaviour
     [Header("Questions")]
     [SerializeField] private Transform ustDikdortgen;
     [SerializeField] private Transform altDikdortgen;
-
+    
     [Header("Texts")]
     [SerializeField] private Text ust_Text;
     [SerializeField] private Text alt_Text;
 
     TimerManager timerManager;
     DairelerManager dairelerManager;
+    TrueFalseManager trueFalseManager;
 
     int oyunSayac;
     int kacinciOyun;
@@ -28,9 +29,10 @@ public class GameManager : MonoBehaviour
     private void Awake() {
         timerManager = GameObject.FindObjectOfType<TimerManager>();
         dairelerManager = GameObject.FindObjectOfType<DairelerManager>();
+        trueFalseManager = GameObject.FindObjectOfType<TrueFalseManager>();
         ust_Text.text = "0";
         alt_Text.text = "0";
-        oyunSayac = 14;
+        oyunSayac = 0;
         kacinciOyun = 0;
     }
 
@@ -196,12 +198,24 @@ public class GameManager : MonoBehaviour
         }
 
         if (butonDegeri == buyukDeger) {
+            trueFalseManager.TrueFalseScaleAc(true);
             dairelerManager.DairelerScaleAc(oyunSayac % 5);
             oyunSayac++;
             KacinciOyun();
         }
         else {
-
+            trueFalseManager.TrueFalseScaleAc(false);
+            HatayaGoreSayaciAzalt();
+            KacinciOyun();
         }
+    }
+
+    private void HatayaGoreSayaciAzalt() {
+        oyunSayac -= (oyunSayac % 5 + 5);
+
+        if (oyunSayac<0) {
+            oyunSayac = 0;
+        }
+        dairelerManager.DairelerScaleKapat();
     }
 }
