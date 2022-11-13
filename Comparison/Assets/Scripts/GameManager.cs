@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         alt_Text.text = "0";
         oyunSayac = 0;
         kacinciOyun = 0;
+        debug.Log("test");
     }
 
     private void Start() {
