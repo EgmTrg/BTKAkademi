@@ -8,11 +8,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject puanSurePaneli;
     [SerializeField] private GameObject puaniKapYazisi;
     [SerializeField] private GameObject buyukOlaniSecYazisi;
+    [SerializeField] private GameObject pauseMenu_Panel;
 
     [Header("Questions")]
     [SerializeField] private Transform ustDikdortgen;
     [SerializeField] private Transform altDikdortgen;
-    
+
     [Header("Texts")]
     [SerializeField] private Text ust_Text;
     [SerializeField] private Text alt_Text;
@@ -41,23 +42,7 @@ public class GameManager : MonoBehaviour
         OyunaBasla();
     }
 
-    private void SahneEkraniniGuncelle() {
-        puanSurePaneli.GetComponent<CanvasGroup>().DOFade(1f, 1f);
-        puaniKapYazisi.GetComponent<CanvasGroup>().DOFade(1f, 1f);
-
-        ustDikdortgen.GetComponent<RectTransform>().DOLocalMoveX(0f, 1f).SetEase(Ease.OutBack);
-        altDikdortgen.GetComponent<RectTransform>().DOLocalMoveX(0f, 1f).SetEase(Ease.OutBack);
-    }
-
-
-    public void OyunaBasla() {
-        Debug.Log("Oyun Basladi.");
-        puaniKapYazisi.GetComponent<CanvasGroup>().DOFade(0f, 1f).SetDelay(2f);
-        buyukOlaniSecYazisi.GetComponent<CanvasGroup>().DOFade(1f, 1f).SetDelay(2f);
-        KacinciOyun();
-        timerManager.SureyiBaslat();
-    }
-
+    #region Level
     private void KacinciOyun() {
         if (oyunSayac < 5) {
             kacinciOyun = 1;
@@ -67,7 +52,8 @@ public class GameManager : MonoBehaviour
         }
         else if (oyunSayac >= 10 && oyunSayac < 15) {
             kacinciOyun = 3;
-        }else if (oyunSayac >= 15 && oyunSayac < 20) {
+        }
+        else if (oyunSayac >= 15 && oyunSayac < 20) {
             kacinciOyun = 4;
         }
 
@@ -208,13 +194,43 @@ public class GameManager : MonoBehaviour
             KacinciOyun();
         }
     }
+    #endregion
+
+    public void OyunaBasla() {
+        Debug.Log("Oyun Basladi.");
+        puaniKapYazisi.GetComponent<CanvasGroup>().DOFade(0f, 1f).SetDelay(2f);
+        buyukOlaniSecYazisi.GetComponent<CanvasGroup>().DOFade(1f, 1f).SetDelay(2f);
+        KacinciOyun();
+        timerManager.SureyiBaslat();
+    }
+
+    private void SahneEkraniniGuncelle() {
+        puanSurePaneli.GetComponent<CanvasGroup>().DOFade(1f, 1f);
+        puaniKapYazisi.GetComponent<CanvasGroup>().DOFade(1f, 1f);
+
+        ustDikdortgen.GetComponent<RectTransform>().DOLocalMoveX(0f, 1f).SetEase(Ease.OutBack);
+        altDikdortgen.GetComponent<RectTransform>().DOLocalMoveX(0f, 1f).SetEase(Ease.OutBack);
+    }
 
     private void HatayaGoreSayaciAzalt() {
         oyunSayac -= (oyunSayac % 5 + 5);
 
-        if (oyunSayac<0) {
+        if (oyunSayac < 0) {
             oyunSayac = 0;
         }
         dairelerManager.DairelerScaleKapat();
+    }
+
+    public void SetPauseMenuState(bool pauseMenuState) {
+        pauseMenu_Panel.SetActive(pauseMenuState);
+
+        if (pauseMenuState) {
+            Debug.Log("Pause menu on");
+            pauseMenu_Panel.GetComponent<CanvasGroup>().DOFade(1f, 0.2f);
+        }
+        else {
+            Time.timeScale = 1f;
+            pauseMenu_Panel.GetComponent<CanvasGroup>().DOFade(0f, 0f);
+        }
     }
 }
