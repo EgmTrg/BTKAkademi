@@ -170,8 +170,6 @@ public class GameManager : MonoBehaviour
 
         ust_Text.text = ustDeger.ToString();
         alt_Text.text = altDeger.ToString();
-
-        //Debug.Log($"Buyuk: {buyukDeger}, ustDeger: {ustDeger}, altDeger: {altDeger}");
     }
 
     public void ButonDegeriBelirle(string butonAdi) {
@@ -183,7 +181,7 @@ public class GameManager : MonoBehaviour
         }
 
         if (butonDegeri == buyukDeger) {
-            trueFalseManager.TrueFalseScaleAc(true);
+            trueFalseManager.TrueFalseScaleAc(true, 10);
             dairelerManager.DairelerScaleAc(oyunSayac % 5);
             oyunSayac++;
             KacinciOyun();
