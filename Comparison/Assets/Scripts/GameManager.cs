@@ -34,12 +34,11 @@ public class GameManager : MonoBehaviour
         alt_Text.text = "0";
         oyunSayac = 0;
         kacinciOyun = 0;
-        debug.Log("test");
     }
 
     private void Start() {
-        OyunaBasla();
         SahneEkraniniGuncelle();
+        OyunaBasla();
     }
 
     private void SahneEkraniniGuncelle() {
@@ -53,11 +52,10 @@ public class GameManager : MonoBehaviour
 
     public void OyunaBasla() {
         Debug.Log("Oyun Basladi.");
-        puaniKapYazisi.GetComponent<CanvasGroup>().DOFade(0f, 1f);
-        buyukOlaniSecYazisi.GetComponent<CanvasGroup>().DOFade(1f, 1f);
+        puaniKapYazisi.GetComponent<CanvasGroup>().DOFade(0f, 1f).SetDelay(2f);
+        buyukOlaniSecYazisi.GetComponent<CanvasGroup>().DOFade(1f, 1f).SetDelay(2f);
         KacinciOyun();
-
-        //timerManager.SureyiBaslat();
+        timerManager.SureyiBaslat();
     }
 
     private void KacinciOyun() {
@@ -187,7 +185,7 @@ public class GameManager : MonoBehaviour
         ust_Text.text = ustDeger.ToString();
         alt_Text.text = altDeger.ToString();
 
-        Debug.Log($"Buyuk: {buyukDeger}, ustDeger: {ustDeger}, altDeger: {altDeger}");
+        //Debug.Log($"Buyuk: {buyukDeger}, ustDeger: {ustDeger}, altDeger: {altDeger}");
     }
 
     public void ButonDegeriBelirle(string butonAdi) {
