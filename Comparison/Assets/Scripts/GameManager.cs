@@ -42,6 +42,9 @@ public class GameManager : MonoBehaviour
         OyunaBasla();
     }
 
+    public void PauseMenuState() => pauseMenu_Panel.SetActive(true);
+
+
     #region Level
     private void KacinciOyun() {
         if (oyunSayac < 5) {
@@ -195,7 +198,6 @@ public class GameManager : MonoBehaviour
     #endregion
 
     public void OyunaBasla() {
-        Debug.Log("Oyun Basladi.");
         puaniKapYazisi.GetComponent<CanvasGroup>().DOFade(0f, 1f).SetDelay(2f);
         buyukOlaniSecYazisi.GetComponent<CanvasGroup>().DOFade(1f, 1f).SetDelay(2f);
         KacinciOyun();
@@ -219,16 +221,4 @@ public class GameManager : MonoBehaviour
         dairelerManager.DairelerScaleKapat();
     }
 
-    public void SetPauseMenuState(bool pauseMenuState) {
-        pauseMenu_Panel.SetActive(pauseMenuState);
-
-        if (pauseMenuState) {
-            Debug.Log("Pause menu on");
-            pauseMenu_Panel.GetComponent<CanvasGroup>().DOFade(1f, 0.2f);
-        }
-        else {
-            Time.timeScale = 1f;
-            pauseMenu_Panel.GetComponent<CanvasGroup>().DOFade(0f, 0f);
-        }
-    }
 }
