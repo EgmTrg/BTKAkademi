@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject puaniKapYazisi;
     [SerializeField] private GameObject buyukOlaniSecYazisi;
     [SerializeField] private GameObject pauseMenu_Panel;
+    [SerializeField] private GameObject endOfGame_panel;
 
     [Header("Questions")]
     [SerializeField] private Transform ustDikdortgen;
@@ -18,9 +19,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text ust_Text;
     [SerializeField] private Text alt_Text;
 
+    [Header("Sound Clips")]
+    [SerializeField] private AudioClip baslangic_Audio;
+    [SerializeField] private AudioClip dogru_Audio;
+    [SerializeField] private AudioClip yanlis_Audio;
+    [SerializeField] private AudioClip bitis_Audio;
+    [SerializeField] private AudioClip geriSayim_Audio;
+
+
     TimerManager timerManager;
     DairelerManager dairelerManager;
     TrueFalseManager trueFalseManager;
+    AudioSource audioSource;
 
     int oyunSayac;
     int kacinciOyun;
@@ -31,6 +41,7 @@ public class GameManager : MonoBehaviour
         timerManager = GameObject.FindObjectOfType<TimerManager>();
         dairelerManager = GameObject.FindObjectOfType<DairelerManager>();
         trueFalseManager = GameObject.FindObjectOfType<TrueFalseManager>();
+        audioSource = GetComponent<AudioSource>();
         ust_Text.text = "0";
         alt_Text.text = "0";
         oyunSayac = 0;
@@ -44,6 +55,7 @@ public class GameManager : MonoBehaviour
 
     public void PauseMenuState() => pauseMenu_Panel.SetActive(true);
 
+    public void EndOfGameState() => endOfGame_panel.SetActive(true);
 
     #region Level
     private void KacinciOyun() {
@@ -187,17 +199,20 @@ public class GameManager : MonoBehaviour
             trueFalseManager.TrueFalseScaleAc(true, 10);
             dairelerManager.DairelerScaleAc(oyunSayac % 5);
             oyunSayac++;
+            audioSource.PlayOneShot(dogru_Audio);
             KacinciOyun();
         }
         else {
             trueFalseManager.TrueFalseScaleAc(false);
             HatayaGoreSayaciAzalt();
+            audioSource.PlayOneShot(yanlis_Audio);
             KacinciOyun();
         }
     }
     #endregion
 
     public void OyunaBasla() {
+        audioSource.PlayOneShot(baslangic_Audio);
         puaniKapYazisi.GetComponent<CanvasGroup>().DOFade(0f, 1f).SetDelay(2f);
         buyukOlaniSecYazisi.GetComponent<CanvasGroup>().DOFade(1f, 1f).SetDelay(2f);
         KacinciOyun();
