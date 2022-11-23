@@ -10,7 +10,7 @@ public class TimerManager : MonoBehaviour
     bool sureDurumu = true;
 
     private void Start() {
-        kalanSure = 1;
+        kalanSure = 60;
     }
 
     public void SureyiBaslat() {
