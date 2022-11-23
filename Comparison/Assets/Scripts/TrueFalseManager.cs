@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,9 +8,12 @@ public class TrueFalseManager : MonoBehaviour
     [SerializeField] private GameObject trueIcon, falseIcon;
     [SerializeField] private Text score;
 
+    public Text Score { get { return score; } }
+
     int trueCount, falseCount;
 
     private void Start() {
+        score.text = "0";
         ScaleDegeriniKapat();
     }
 

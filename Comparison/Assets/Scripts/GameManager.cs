@@ -1,5 +1,7 @@
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -55,7 +57,19 @@ public class GameManager : MonoBehaviour
 
     public void PauseMenuState() => pauseMenu_Panel.SetActive(true);
 
-    public void EndOfGameState() => endOfGame_panel.SetActive(true);
+    public void Resume() => pauseMenu_Panel.SetActive(false);
+
+    public void BackToMenu() => SceneManager.LoadScene(0);
+
+    public void Restart() => SceneManager.LoadScene(1);
+
+    public void Quit() => Application.Quit();
+
+    public void EndOfGameState() {
+        string score_Text = "Score: " + trueFalseManager.Score.text.ToString();
+        endOfGame_panel.GetComponentInChildren<TMP_Text>().text = score_Text;
+        endOfGame_panel.SetActive(true);
+    }
 
     #region Level
     private void KacinciOyun() {

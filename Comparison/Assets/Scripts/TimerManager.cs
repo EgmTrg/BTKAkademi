@@ -1,16 +1,16 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TimerManager : MonoBehaviour
 {
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private Text sure_Text;
     int kalanSure;
     bool sureDurumu = true;
 
     private void Start() {
-        kalanSure = 90;
+        kalanSure = 1;
     }
 
     public void SureyiBaslat() {
@@ -31,7 +31,10 @@ public class TimerManager : MonoBehaviour
             else
                 sure_Text.text = "0" + kalanSure.ToString();
 
-            kalanSure--;
+            if (kalanSure > 0)
+                kalanSure--;
+            else
+                gameManager.EndOfGameState();
         }
     }
 }
