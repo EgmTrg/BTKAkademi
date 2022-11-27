@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 131421852}
   - component: {fileID: 131421854}
   - component: {fileID: 131421853}
+  - component: {fileID: 131421855}
   m_Layer: 5
   m_Name: rope2
   m_TagString: Untagged
@@ -199,6 +200,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 131421851}
   m_CullTransparentMesh: 1
+--- !u!225 &131421855
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131421851}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &182879292
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,6 +279,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &444171403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 444171405}
+  - component: {fileID: 444171404}
+  m_Layer: 0
+  m_Name: MenuManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &444171404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444171403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f13d839fd698044984e8756d70dc1bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  play_btn: {fileID: 1155894461}
+  settings_btn: {fileID: 1946546742}
+  detailedSettings_btn: {fileID: 0}
+  quit_btn: {fileID: 1258047541}
+  multiply_Text: {fileID: 1110335133}
+  rope_one: {fileID: 1874690702}
+  rope_two: {fileID: 131421851}
+  rope_three: {fileID: 1553632110}
+--- !u!4 &444171405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444171403}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 202.53658, y: 339.84595, z: -2.730195}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &445991103
 GameObject:
@@ -540,6 +605,7 @@ GameObject:
   - component: {fileID: 1110335134}
   - component: {fileID: 1110335136}
   - component: {fileID: 1110335135}
+  - component: {fileID: 1110335137}
   m_Layer: 5
   m_Name: Multply_Text
   m_TagString: Untagged
@@ -605,6 +671,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110335133}
   m_CullTransparentMesh: 1
+--- !u!225 &1110335137
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110335133}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1155894459
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,6 +695,7 @@ GameObject:
   - component: {fileID: 1155894463}
   - component: {fileID: 1155894462}
   - component: {fileID: 1155894461}
+  - component: {fileID: 1155894464}
   m_Layer: 5
   m_Name: Play_Button
   m_TagString: Untagged
@@ -726,6 +805,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155894459}
   m_CullTransparentMesh: 1
+--- !u!225 &1155894464
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155894459}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1258047539
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,6 +829,7 @@ GameObject:
   - component: {fileID: 1258047543}
   - component: {fileID: 1258047542}
   - component: {fileID: 1258047541}
+  - component: {fileID: 1258047544}
   m_Layer: 5
   m_Name: Quit_Button
   m_TagString: Untagged
@@ -847,6 +939,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258047539}
   m_CullTransparentMesh: 1
+--- !u!225 &1258047544
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258047539}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1553632110
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,6 +962,7 @@ GameObject:
   - component: {fileID: 1553632111}
   - component: {fileID: 1553632113}
   - component: {fileID: 1553632112}
+  - component: {fileID: 1553632114}
   m_Layer: 5
   m_Name: rope3
   m_TagString: Untagged
@@ -923,6 +1028,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553632110}
   m_CullTransparentMesh: 1
+--- !u!225 &1553632114
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553632110}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1694091501
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,6 +1138,7 @@ GameObject:
   - component: {fileID: 1874690703}
   - component: {fileID: 1874690705}
   - component: {fileID: 1874690704}
+  - component: {fileID: 1874690706}
   m_Layer: 5
   m_Name: rope1
   m_TagString: Untagged
@@ -1086,6 +1204,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874690702}
   m_CullTransparentMesh: 1
+--- !u!225 &1874690706
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874690702}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1946546740
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,6 +1228,7 @@ GameObject:
   - component: {fileID: 1946546744}
   - component: {fileID: 1946546743}
   - component: {fileID: 1946546742}
+  - component: {fileID: 1946546745}
   m_Layer: 5
   m_Name: Settings_Button
   m_TagString: Untagged
@@ -1207,6 +1338,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946546740}
   m_CullTransparentMesh: 1
+--- !u!225 &1946546745
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946546740}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1947203596
 GameObject:
   m_ObjectHideFlags: 0
