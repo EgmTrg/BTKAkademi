@@ -1,5 +1,4 @@
 using DG.Tweening;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,7 +9,7 @@ public class MenuManager : MonoBehaviour
     [Header("Buttons")]
     [SerializeField] private Button play_btn;
     [SerializeField] private Button settings_btn;
-    [SerializeField] private Button detailedSettings_btn;
+    [SerializeField] private GameObject soundSettings_Image; // Children are button.
     [SerializeField] private Button quit_btn;
 
     [Header("Panels")]
@@ -20,6 +19,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject rope_one;
     [SerializeField] private GameObject rope_two;
     [SerializeField] private GameObject rope_three;
+
+    private bool settings_Pressed = false;
 
     private void Start() {
         MenuFadeAnimation();
@@ -39,7 +40,20 @@ public class MenuManager : MonoBehaviour
 
     #region Button Methods
     public void PlayButton_Event() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    //public void SettingsButton_Event() => detailedSettings_btn.GetComponent<RectTransform>().DOMoveY(-20, 1f);
+    public void SettingsButton_Event() => SoundSettingsStatus();
     public void QuitButton_Event() => Application.Quit();
+    public void SoundOn_Event() => Debug.Log("Sound are muted!");
+    public void SoundOff_Event() => Debug.Log("Sound are unmuted!");
     #endregion
+
+    private void SoundSettingsStatus() {
+        if (!settings_Pressed) {
+            soundSettings_Image.GetComponent<RectTransform>().DOMoveY(245, 1.5f).SetDelay(0.2f);
+            settings_Pressed = true;
+        }
+        else {
+            soundSettings_Image.GetComponent<RectTransform>().DOMoveY(310, 1.5f).SetDelay(0.2f);
+            settings_Pressed = false;
+        }
+    }
 }
